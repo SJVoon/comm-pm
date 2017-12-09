@@ -122,15 +122,9 @@
                 ]
             },
             {
-                "title": "Lain-Lain",
+                "title": "Emergency",
                 "item": [
-                    "Water",
-                    "Breakfast Set",
-                    "Lunch Set",
-                    "Dinner Set",
-                    "Bread",
-                    "Biscuit",
-                    "Porridge"
+                    "Kecemasan"
                 ]
             },
             {
@@ -195,15 +189,9 @@
                 ]
             },
             {
-                "title": "其他",
+                "title": "Emergency",
                 "item": [
-                    "Water",
-                    "Breakfast Set",
-                    "Lunch Set",
-                    "Dinner Set",
-                    "Bread",
-                    "Biscuit",
-                    "Porridge"
+                    "紧急"
                 ]
             },
             {

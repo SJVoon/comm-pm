@@ -5,11 +5,17 @@ import {
     Button,
     Container,
 } from 'semantic-ui-react'
+import Sound from 'react-sound'
 import Menu from './Menu'
 import { func, string, object, array } from 'prop-types'
 import './Selection.css'
+import beep from './audio/beep.mp3'
 
 class Selection extends Component {
+    state = {
+        play: true
+    }
+
     static propTypes = {
         colors: array,
         language: object,
@@ -26,6 +32,15 @@ class Selection extends Component {
         return (
             this.props.title === "Emergency" ?
                 <div>
+                    <Sound
+                        url={beep}
+                        playStatus={
+                            this.state.play ? Sound.status.PLAYING : Sound.status.STOPPED
+                        }
+                        volume={30}
+                        onFinishedPlaying={this.replay}
+                        autoLoad={true}
+                    />
                     <Menu language={language} history={history} />
                     <Container>
                         <Grid
@@ -38,7 +53,7 @@ class Selection extends Component {
                                 inverted color='red'
                                 style={{ fontSize: '6em' }}
                             >
-                                {this.props.title}
+                                {this.props.items[0]}
                             </Segment>
                         </Grid>
                     </Container>

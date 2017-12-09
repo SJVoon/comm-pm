@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react'
+import Sound from 'react-sound'
 import Home from './Home';
 import Login from './Login';
 import History from './History';
 import Selection from './Selection'
 import Instruction from './Instruction'
 import lang from './Home.json';
+import music from './audio/music.mp3'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 
@@ -18,7 +20,8 @@ class App extends Component {
     language: lang.English,
     title: '',
     items: [],
-    histIns: []
+    histIns: [],
+    play: true
   }
 
   handleNameChange = name => this.setState({ name })
@@ -35,11 +38,23 @@ class App extends Component {
 
   handleHistIns = (item) => this.setState({ histIns: [...this.state.histIns, item] })
 
+  replay = () => this.setState({ play: false }, () => this.setState({ play: true }))
+
   render() {
     const { name, language } = this.state
     return (
       <BrowserRouter>
         <div style={{ height: '100%' }}>
+          <Sound
+            url={music}
+            playStatus={
+              Sound.status.PLAYING
+            }
+            volume={15}
+            loop={true}
+            onFinishedPlaying={this.replay}
+            autoLoad={true}
+          />
           <Grid
             textAlign="center"
             style={{ height: '100%' }}
