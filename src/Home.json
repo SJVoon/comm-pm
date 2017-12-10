@@ -110,7 +110,7 @@
                 ]
             },
             {
-                "title": "Kecemasan",
+                "title": "Permintaan",
                 "item": [
                     "Tolong",
                     "Barang Hilang",
@@ -122,7 +122,7 @@
                 ]
             },
             {
-                "title": "Emergency",
+                "title": "Kecemasan",
                 "item": [
                     "Kecemasan"
                 ]
@@ -177,7 +177,7 @@
                 ]
             },
             {
-                "title": "紧急",
+                "title": "要求",
                 "item": [
                     "帮我",
                     "东西不见了",
@@ -189,7 +189,7 @@
                 ]
             },
             {
-                "title": "Emergency",
+                "title": "紧急",
                 "item": [
                     "紧急"
                 ]
