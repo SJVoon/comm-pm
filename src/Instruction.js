@@ -91,7 +91,7 @@ export default class Instruction extends Component {
                         secondary
                         style={{ fontSize: '4em' }}
                     >
-                        <img src={this.check()} width="300" height="280" alt="Unavailable Image" />
+                        <img src={this.check()} width="320" height="300" alt="Unavailable Image" />
                         {histIns[histIns.length - 1]}
                     </Segment>
                 </Grid>
