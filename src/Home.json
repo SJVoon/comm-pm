@@ -8,6 +8,7 @@
         "selections": [
             {
                 "title": "Food",
+                "titleImg": "/images/home/1.jpeg",
                 "item": [
                     "Water",
                     "Breakfast Set",
@@ -20,6 +21,7 @@
             },
             {
                 "title": "Feeling",
+                "titleImg": "/images/home/2.png",
                 "item": [
                     "Happy",
                     "Sad",
@@ -32,6 +34,7 @@
             },
             {
                 "title": "Health",
+                "titleImg": "/images/home/3.png",
                 "item": [
                     "Headache",
                     "Hand Numb",
@@ -44,6 +47,7 @@
             },
             {
                 "title": "Request",
+                "titleImg": "/images/home/4.jpg",
                 "item": [
                     "Help",
                     "Lost My Things",
@@ -56,13 +60,10 @@
             },
             {
                 "title": "Emergency",
+                "titleImg": "/images/home/5.jpg",
                 "item": [
                     "Emergency"
                 ]
-            },
-            {
-                "title": "Custom",
-                "item": []
             }
         ]
     },
@@ -126,10 +127,6 @@
                 "item": [
                     "Kecemasan"
                 ]
-            },
-            {
-                "title": "Tersendiri",
-                "item": []
             }
         ]
     },
@@ -193,10 +190,6 @@
                 "item": [
                     "紧急"
                 ]
-            },
-            {
-                "title": "自定义",
-                "item": []
             }
         ]
     }

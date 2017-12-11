@@ -11,8 +11,40 @@ import lang from './Home.json';
 import music from './audio/music.mp3'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
+import a1 from './images/selection/food/1.jpg'
+import a2 from './images/selection/food/2.jpg'
+import a3 from './images/selection/food/3.jpg'
+import a4 from './images/selection/food/4.jpg'
+import a5 from './images/selection/food/5.jpg'
+import a6 from './images/selection/food/6.jpg'
+import a7 from './images/selection/food/7.jpg'
+import b1 from './images/selection/feeling/1.png'
+import b2 from './images/selection/feeling/2.png'
+import b3 from './images/selection/feeling/3.jpg'
+import b4 from './images/selection/feeling/4.jpg'
+import b5 from './images/selection/feeling/5.jpg'
+import b6 from './images/selection/feeling/6.jpg'
+import b7 from './images/selection/feeling/7.jpeg'
+import c1 from './images/selection/health/1.jpg'
+import c2 from './images/selection/health/2.jpg'
+import c3 from './images/selection/health/3.jpg'
+import c4 from './images/selection/health/4.jpg'
+import c5 from './images/selection/health/5.jpg'
+import c6 from './images/selection/health/6.jpg'
+import c7 from './images/selection/health/7.jpg'
+import d1 from './images/selection/request/1.png'
+import d2 from './images/selection/request/2.png'
+import d3 from './images/selection/request/3.jpg'
+import d4 from './images/selection/request/4.jpg'
+import d5 from './images/selection/request/5.jpeg'
+import d6 from './images/selection/request/6.jpg'
+import d7 from './images/selection/request/7.jpg'
 
 const colors = ["orange", "yellow", "olive", "green", "red", "teal", "blue", "violet", "purple", "pink", "brown"]
+const food = [a1, a2, a3, a4, a5, a6, a7];
+const feeling = [b1, b2, b3, b4, b5, b6, b7];
+const health = [c1, c2, c3, c4, c5, c6, c7];
+const request = [d1, d2, d3, d4, d5, d6, d7];
 
 class App extends Component {
   state = {
@@ -21,7 +53,9 @@ class App extends Component {
     title: '',
     items: [],
     histIns: [],
-    play: true
+    play: true,
+    histImage: [],
+    group: ''
   }
 
   handleNameChange = name => this.setState({ name })
@@ -34,7 +68,7 @@ class App extends Component {
         : lang.Malay
   })
 
-  handleItemChange = (items, title, cb) => this.setState({ items, title }, cb)
+  handleItemChange = (items, title, group, cc, cb) => this.setState({ items, title, group }, cc, cb)
 
   handleHistIns = (item) => this.setState({ histIns: [...this.state.histIns, item] })
 
@@ -86,11 +120,14 @@ class App extends Component {
                   path='/comm-pm/selection'
                   render={props => <Selection {...props} language={language} items={this.state.items}
                     colors={colors} title={this.state.title} handleHistIns={this.handleHistIns}
+                    food={food} feeling={feeling} health={health} request={request} handleItemChange={this.handleItemChange}
                   />}
                 />
                 <Route
                   path='/comm-pm/instruction'
-                  render={props => <Instruction {...props} language={language} histIns={this.state.histIns}
+                  render={props => <Instruction {...props} language={language} histIns={this.state.histIns} histImage={this.state.histImage}
+                    food={food} feeling={feeling} health={health} request={request} items={this.state.items} title={this.state.title}
+                    group={this.state.group}
                   />}
                 />
               </Switch>

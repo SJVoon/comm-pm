@@ -15,7 +15,9 @@ import beep from './audio/beep.mp3'
 class Selection extends Component {
     state = {
         play: true,
-        visible: true
+        visible: true,
+        image: [],
+        imgList: []
     }
 
     static propTypes = {
@@ -26,19 +28,18 @@ class Selection extends Component {
         handleHistIns: func
     };
 
-    handleHistIns = (item) => this.props.handleHistIns(item, this.props.history.push('/comm-pm/instruction'))
+    handleHistIns = (item) => this.props.handleHistIns(item)
 
     handleVisible = () => this.setState({ visible: !this.state.visible })
 
     handleInitVisible = (onmousemove) => this.setState({ visible: !this.state.visible })
-    //    handleVisibleFalse = () => this.setState({visible:false},()=>this.setState({visible:true}))
 
-    //    handleVisibleTrue = () => this.setState({ visible: true }, () => this.setState({ visible: false }))
+    handleItemChange = (item, title, group) => this.props.handleItemChange(item, title, group, () => this.props.history.push('/comm-pm/instruction'), this.handleHistIns(title))
 
     replay = () => this.setState({ play: false }, () => this.setState({ play: true }))
 
     render() {
-        const { language, colors, history, title } = this.props
+        const { language, colors, history, title, food, feeling, health, request } = this.props
 
         return (
             this.props.title === "Emergency" || this.props.title === "Kecemasan" || this.props.title === "紧急" ?
@@ -69,7 +70,7 @@ class Selection extends Component {
                                     className="BigSegment"
                                     compact
                                     inverted color='red'
-                                    style={{ fontSize: '6em' }}
+                                    style={{ fontSize: '5em' }}
                                 >
                                     {this.props.items[0]}
                                 </Segment>
@@ -87,10 +88,18 @@ class Selection extends Component {
                                 <Grid.Column key={item}>
                                     <Button
                                         className="BigButton"
-                                        style={{ fontSize: '2em' }}
-                                        color={colors[i % colors.length]}
-                                        onClick={() => this.handleHistIns(item)}
+                                        style={{ fontSize: '1.5em' }}
+                                        color={'gray'}
+                                        onClick={() => this.handleItemChange(this.props.items, item, this.props.title)}
                                     >
+                                        <img
+                                            src={this.props.title === "Food" || this.props.title === "Makan" || this.props.title === "食物" ? food[i % food.length]
+                                                : this.props.title === "Feeling" || this.props.title === "Perasaan" || this.props.title === "感觉" ? feeling[i % feeling.length]
+                                                    : this.props.title === "Health" || this.props.title === "Kesihatan" || this.props.title === "健康" ? health[i % health.length]
+                                                        : request[i % request.length]}
+                                            width="200"
+                                            height="160"
+                                        />
                                         {item}
                                     </Button>
                                 </Grid.Column>
@@ -103,3 +112,17 @@ class Selection extends Component {
 };
 
 export default Selection;
+/*<img src={this.props.title === "Food" ? food[i % food.length]
+                                                : this.props.title === "Feeling" ? feeling[i % feeling.length]
+    : this.props.title === "Health" ? health[i % health.length]
+        : request[i % request.length]} width = "200" height= "160" />
+
+function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+}
+const food1 = importAll(require.context('./images/selection/food', false, /\.(png|jpe?g|svg)$/));
+const feeling1 = importAll(require.context('./images/selection/feeling', false, /\.(png|jpe?g|svg)$/));
+const health1 = importAll(require.context('./images/selection/health', false, /\.(png|jpe?g|svg)$/));
+const request1 = importAll(require.context('./images/selection/request', false, /\.(png|jpe?g|svg)$/));*/

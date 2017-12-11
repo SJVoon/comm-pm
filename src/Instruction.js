@@ -7,16 +7,55 @@ import {
     Button,
     Container,
 } from 'semantic-ui-react';
-import { array } from 'prop-types'
+import { array, string } from 'prop-types'
+import './Selection.css'
 
 export default class Instruction extends Component {
     static propTypes = {
-        histIns: array
+        histIns: array,
+        items: array,
+        title: string,
+        food: array,
+        feeling: array,
+        health: array,
+        request: array,
+        group: string
+    }
+
+    check = () => {
+        let src = ''
+        if (this.props.group === "Food" || this.props.group === "Makan" || this.props.group === "食物") {
+            for (let i = 0; i < this.props.food.length; i++) {
+                if (this.props.histIns[this.props.histIns.length - 1] === this.props.items[i])
+                    src = this.props.food[i]
+            }
+        }
+        else if (this.props.group === "Feeling" || this.props.group === "Perasaan" || this.props.group === "感觉") {
+            for (let i = 0; i < this.props.feeling.length; i++) {
+                if (this.props.histIns[this.props.histIns.length - 1] === this.props.items[i])
+                    src = this.props.feeling[i]
+            }
+        }
+        else if (this.props.group === "Health" || this.props.group === "Kesihatan" || this.props.group === "健康") {
+            for (let i = 0; i < this.props.health.length; i++) {
+                if (this.props.histIns[this.props.histIns.length - 1] === this.props.items[i])
+                    src = this.props.health[i]
+            }
+        }
+        else {
+            for (let i = 0; i < this.props.request.length; i++) {
+                if (this.props.histIns[this.props.histIns.length - 1] === this.props.items[i])
+                    src = this.props.request[i]
+            }
+        }
+        console.log(src)
+        return src
     }
 
     render() {
-        const { histIns, language } = this.props
+        const { histIns, language, food, feeling, health, request, title, group, items } = this.props
         const { login, header, history } = language
+        console.log(histIns)
         return <div>
             <Segment padded="very" color='grey'>
                 <Header className="Header" as="h1" textAlign="center" style={{ fontSize: '40px' }}>
@@ -44,14 +83,15 @@ export default class Instruction extends Component {
             <Container>
                 <Grid
                     centered
-                    style={{ marginTop: '100px' }}
+                    style={{ marginTop: '20px' }}
                 >
                     <Segment
                         className="BigSegment"
                         compact
-                        inverted color='red'
-                        style={{ fontSize: '6em' }}
+                        secondary
+                        style={{ fontSize: '4em' }}
                     >
+                        <img src={this.check()} width="300" height="280" alt="Unavailable Image" />
                         {histIns[histIns.length - 1]}
                     </Segment>
                 </Grid>

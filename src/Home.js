@@ -9,9 +9,18 @@ import {
 } from 'semantic-ui-react';
 import { func, object, array } from 'prop-types'
 import './Home.css';
+import img1 from './images/home/1.jpeg'
+import img2 from './images/home/2.png'
+import img3 from './images/home/3.png'
+import img4 from './images/home/4.jpg'
+import img5 from './images/home/5.jpg'
+
+const images = [img1, img2, img3, img4, img5]
 
 class Home extends Component {
-    state = { lang: this.props.language }
+    state = {
+        lang: this.props.language,
+    }
 
     static propTypes = {
         colors: array,
@@ -19,13 +28,14 @@ class Home extends Component {
         handleItemChange: func
     }
 
-    handleItemChange = (item, title) => this.props.handleItemChange(item, title, () => this.props.history.push('/comm-pm/selection'))
+    handleItemChange = (item, title, group) => this.props.handleItemChange(item, title, group, () => this.props.history.push('/comm-pm/selection'))
 
     //handleItemChange = item => this.props.handleItemChange(item, () => this.props.history.push('/comm-pm/selection'))
 
     render() {
         const { language, colors, history } = this.props
         const { login, header } = language
+        console.log(language.selections)
         return (
             <div>
                 <Segment padded="very" color='grey'>
@@ -59,8 +69,9 @@ class Home extends Component {
                                     className="BigButton"
                                     style={{ fontSize: '2em' }}
                                     onClick={() => this.handleItemChange(selection.item, selection.title)}
-                                    color={colors[i % colors.length]}
+                                    color={'gray'}
                                 >
+                                    <img src={images[i % images.length]} width="200" height="160" />
                                     {selection.title}
                                 </Button>
                             </Grid.Column>
