@@ -1,4 +1,4 @@
-FIND THE GITHUB PAGE OF THIS REPO AT sjvoon.github.io/comm-pm
+FIND THE GITHUB PAGE OF THIS REPO AT [sjvoon.github.io/comm-pm](sjvoon.github.io/comm-pm)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
